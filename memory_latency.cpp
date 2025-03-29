@@ -16,7 +16,9 @@
  * @param t - the struct timespec to convert.
  * @return - the value of time in nano-seconds.
  */
-uint64_t nanosectime(struct timespec t) { return t.tv_nsec; }
+uint64_t nanosectime(struct timespec t) {
+  return (uint64_t)t.tv_nsec + (uint64_t)1000000000ULL * (uint64_t)t.tv_sec;
+}
 
 /**
  * Measures the average latency of accessing a given array in a sequential
