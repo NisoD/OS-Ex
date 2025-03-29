@@ -1,0 +1,199 @@
+: Success
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 51.36    0.000151         151         1           execve
+ 13.27    0.000039           4         8           mmap
+  9.18    0.000027          13         2           openat
+  4.76    0.000014           4         3           mprotect
+  3.06    0.000009           9         1           munmap
+  3.06    0.000009           3         3           brk
+  2.38    0.000007           2         3           newfstatat
+  2.04    0.000006           3         2           write
+  2.04    0.000006           2         3           close
+  2.04    0.000006           6         1         1 access
+  1.36    0.000004           2         2           pread64
+  0.68    0.000002           2         1           read
+  0.68    0.000002           2         1           dup
+  0.68    0.000002           2         1           fcntl
+  0.68    0.000002           2         1           set_tid_address
+  0.68    0.000002           2         1           prlimit64
+  0.68    0.000002           2         1           getrandom
+  0.68    0.000002           2         1           rseq
+  0.34    0.000001           1         1           arch_prctl
+  0.34    0.000001           1         1           set_robust_list
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000294           7        38         1 total
+
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=memory ./WhatIDo
+brk(NULL)                               = 0x55eef0309000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ffb386e3000
+mmap(NULL, 170582, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7ffb386b9000
+mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7ffb384d8000
+mmap(0x7ffb384fe000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7ffb384fe000
+mmap(0x7ffb38653000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7ffb38653000
+mmap(0x7ffb386a6000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7ffb386a6000
+mmap(0x7ffb386ac000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ffb386ac000
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ffb384d5000
+mprotect(0x7ffb386a6000, 16384, PROT_READ) = 0
+mprotect(0x55eecffe3000, 4096, PROT_READ) = 0
+mprotect(0x7ffb3871b000, 8192, PROT_READ) = 0
+munmap(0x7ffb386b9000, 170582)          = 0
+brk(NULL)                               = 0x55eef0309000
+brk(0x55eef032a000)                     = 0x55eef032a000
+Error. The program should receive a single argument. Exiting.
+: Success
++++ exited with 0 +++
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=memory ./WhatIDo 3
+brk(NULL)                               = 0x5631e1db5000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3f7ba5b000
+mmap(NULL, 170582, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3f7ba31000
+mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3f7b850000
+mmap(0x7f3f7b876000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7f3f7b876000
+mmap(0x7f3f7b9cb000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7f3f7b9cb000
+mmap(0x7f3f7ba1e000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7f3f7ba1e000
+mmap(0x7f3f7ba24000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f3f7ba24000
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3f7b84d000
+mprotect(0x7f3f7ba1e000, 16384, PROT_READ) = 0
+mprotect(0x5631cb22d000, 4096, PROT_READ) = 0
+mprotect(0x7f3f7ba93000, 8192, PROT_READ) = 0
+munmap(0x7f3f7ba31000, 170582)          = 0
+brk(NULL)                               = 0x5631e1db5000
+brk(0x5631e1dd6000)                     = 0x5631e1dd6000
++++ exited with 0 +++
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=memory ./WhatIDo 3    
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=memory ./WhatIDo result.txt 
+brk(NULL)                               = 0x55726740e000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3dae4ad000
+mmap(NULL, 170582, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3dae483000
+mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3dae2a2000
+mmap(0x7f3dae2c8000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7f3dae2c8000
+mmap(0x7f3dae41d000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7f3dae41d000
+mmap(0x7f3dae470000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7f3dae470000
+mmap(0x7f3dae476000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f3dae476000
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3dae29f000
+mprotect(0x7f3dae470000, 16384, PROT_READ) = 0
+mprotect(0x55723e377000, 4096, PROT_READ) = 0
+mprotect(0x7f3dae4e5000, 8192, PROT_READ) = 0
+munmap(0x7f3dae483000, 170582)          = 0
+brk(NULL)                               = 0x55726740e000
+brk(0x55726742f000)                     = 0x55726742f000
++++ exited with 0 +++
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ 
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -r ./WhatIDo 3 
+     0.000000 execve("./WhatIDo", ["./WhatIDo", "3"], 0x7ffc58a3f8a0 /* 88 vars */) = 0
+     0.002263 brk(NULL)                 = 0x55a99d443000
+     0.000442 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f593a373000
+     0.000250 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+     0.001212 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+     0.000346 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=170582, ...}, AT_EMPTY_PATH) = 0
+     0.000187 mmap(NULL, 170582, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f593a349000
+     0.000142 close(3)                  = 0
+     0.000146 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+     0.000706 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+     0.000093 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+     0.000095 newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+     0.000135 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+     0.000105 mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f593a168000
+     0.000095 mmap(0x7f593a18e000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7f593a18e000
+     0.000106 mmap(0x7f593a2e3000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7f593a2e3000
+     0.000089 mmap(0x7f593a336000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7f593a336000
+     0.000113 mmap(0x7f593a33c000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f593a33c000
+     0.000233 close(3)                  = 0
+     0.000107 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f593a165000
+     0.000112 arch_prctl(ARCH_SET_FS, 0x7f593a165740) = 0
+     0.000079 set_tid_address(0x7f593a165a10) = 112132
+     0.000076 set_robust_list(0x7f593a165a20, 24) = 0
+     0.000073 rseq(0x7f593a166060, 0x20, 0, 0x53053053) = 0
+     0.000200 mprotect(0x7f593a336000, 16384, PROT_READ) = 0
+     0.000097 mprotect(0x55a9999e7000, 4096, PROT_READ) = 0
+     0.000109 mprotect(0x7f593a3ab000, 8192, PROT_READ) = 0
+     0.000126 prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+     0.000142 munmap(0x7f593a349000, 170582) = 0
+     0.000198 mkdir("Welcome", 0775)    = 0
+     0.001741 getrandom("\xc6\xfb\x44\x24\x7c\x81\xfe\x4f", 8, GRND_NONBLOCK) = 8
+     0.000082 brk(NULL)                 = 0x55a99d443000
+     0.000178 brk(0x55a99d464000)       = 0x55a99d464000
+     0.000302 openat(AT_FDCWD, "Welcome/Welcome", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+     0.003325 openat(AT_FDCWD, "Welcome/To", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 4
+     0.001751 openat(AT_FDCWD, "Welcome/OS-2024", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 5
+     0.001938 newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+     0.000366 write(3, "niso\nIf you haven't read the cou"..., 73) = 73
+     0.000144 close(3)                  = 0
+     0.002301 newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+     0.000353 write(4, "Start exercises early!", 22) = 22
+     0.000229 close(4)                  = 0
+     0.002884 newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+     0.000155 write(5, "Good luck!", 10) = 10
+     0.000112 close(5)                  = 0
+     0.002121 unlink("Welcome/Welcome") = 0
+     0.001636 unlink("Welcome/To")      = 0
+     0.001674 unlink("Welcome/OS-2024") = 0
+     0.001786 rmdir("Welcome/")         = 0
+     0.002813 exit_group(0)             = ?
+     0.000489 +++ exited with 0 +++
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ 
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -i ./WhatIDo 3
+[00007f2fb1f5aa17] execve("./WhatIDo", ["./WhatIDo", "3"], 0x7ffd52402140 /* 88 vars */) = 0
+[00007f52a8118a77] brk(NULL)            = 0x5605b8aa5000
+[00007f52a8119ad3] mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f52a80f1000
+[00007f52a8119817] access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+[00007f52a811994d] openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+[00007f52a811975a] newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=170582, ...}, AT_EMPTY_PATH) = 0
+[00007f52a8119ad3] mmap(NULL, 170582, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f52a80c7000
+[00007f52a8119837] close(3)             = 0
+[00007f52a811994d] openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+[00007f52a81199a4] read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+[00007f52a81199ca] pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[00007f52a811975a] newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+[00007f52a81199ca] pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+[00007f52a8119ad3] mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f52a7ee6000
+[00007f52a8119ad3] mmap(0x7f52a7f0c000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7f52a7f0c000
+[00007f52a8119ad3] mmap(0x7f52a8061000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7f52a8061000
+[00007f52a8119ad3] mmap(0x7f52a80b4000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7f52a80b4000
+[00007f52a8119ad3] mmap(0x7f52a80ba000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f52a80ba000
+[00007f52a8119837] close(3)             = 0
+[00007f52a8119ad3] mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f52a7ee3000
+[00007f52a81144d9] arch_prctl(ARCH_SET_FS, 0x7f52a7ee3740) = 0
+[00007f52a810ad6a] set_tid_address(0x7f52a7ee3a10) = 112435
+[00007f52a810adc6] set_robust_list(0x7f52a7ee3a20, 24) = 0
+[00007f52a810adfd] rseq(0x7f52a7ee4060, 0x20, 0, 0x53053053) = 0
+[00007f52a8119b37] mprotect(0x7f52a80b4000, 16384, PROT_READ) = 0
+[00007f52a8119b37] mprotect(0x560598d49000, 4096, PROT_READ) = 0
+[00007f52a8119b37] mprotect(0x7f52a8129000, 8192, PROT_READ) = 0
+[00007f52a7fe36e0] prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+[00007f52a8119b17] munmap(0x7f52a80c7000, 170582) = 0
+[00007f52a7fdde27] mkdir("Welcome", 0775) = 0
+[00007f52a7f25190] getrandom("\x25\xa0\x17\x4a\xe7\xd6\xe8\x48", 8, GRND_NONBLOCK) = 8
+[00007f52a7fe3b37] brk(NULL)            = 0x5605b8aa5000
+[00007f52a7fe3b37] brk(0x5605b8ac6000)  = 0x5605b8ac6000
+[00007f52a7fddf01] openat(AT_FDCWD, "Welcome/Welcome", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+[00007f52a7fddf01] openat(AT_FDCWD, "Welcome/To", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 4
+[00007f52a7fddf01] openat(AT_FDCWD, "Welcome/OS-2024", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 5
+[00007f52a7fdd75a] newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[00007f52a7fde240] write(3, "niso\nIf you haven't read the cou"..., 73) = 73
+[00007f52a7fe2d57] close(3)             = 0
+[00007f52a7fdd75a] newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[00007f52a7fde240] write(4, "Start exercises early!", 22) = 22
+[00007f52a7fe2d57] close(4)             = 0
+[00007f52a7fdd75a] newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+[00007f52a7fde240] write(5, "Good luck!", 10) = 10
+[00007f52a7fe2d57] close(5)             = 0
+[00007f52a7fdfa07] unlink("Welcome/Welcome") = 0
+[00007f52a7fdfa07] unlink("Welcome/To") = 0
+[00007f52a7fdfa07] unlink("Welcome/OS-2024") = 0
+[00007f52a7fdfa67] rmdir("Welcome/")    = 0
+[00007f52a7fba349] exit_group(0)        = ?
+[????????????????] +++ exited with 0 +++
+--
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=open,write,unlink,rmdir -s 1024 ./WhatIDo " to *bodek* type sl for maximum fun" 
+
+write(3, "niso\nIf you haven't read the course guidelines yet --- do it right now!\n to *bodek* type sl for maximum fun", 107) = 107
+write(4, "Start exercises early!", 22)  = 22
+write(5, "Good luck!", 10)              = 10
+unlink("Welcome/Welcome")               = 0
+unlink("Welcome/To")                    = 0
+unlink("Welcome/OS-2024")               = 0
+rmdir("Welcome/")                       = 0
++++ exited with 0 +++
+niso@lake-05:/cs/labs/gabis/niso/Downloads $ strace -e trace=open,write,unlink,rmdir -s 1024 ./WhatIDo " to *bodek* type sl for maximum fun"
+
