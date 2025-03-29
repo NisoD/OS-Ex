@@ -1,0 +1,51 @@
+execve("./WhatIDo", ["./WhatIDo", "revital"], 0x7fffe06a2528 /* 44 vars */) = 0
+brk(NULL)                               = 0x559a8bc8b000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe691d45000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=165958, ...}, AT_EMPTY_PATH) = 0
+mmap(NULL, 165958, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fe691d1c000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20t\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+newfstatat(3, "", {st_mode=S_IFREG|0755, st_size=1922136, ...}, AT_EMPTY_PATH) = 0
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+mmap(NULL, 1970000, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fe691b3b000
+mmap(0x7fe691b61000, 1396736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7fe691b61000
+mmap(0x7fe691cb6000, 339968, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17b000) = 0x7fe691cb6000
+mmap(0x7fe691d09000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1ce000) = 0x7fe691d09000
+mmap(0x7fe691d0f000, 53072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fe691d0f000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe691b38000
+arch_prctl(ARCH_SET_FS, 0x7fe691b38740) = 0
+set_tid_address(0x7fe691b38a10)         = 1681490
+set_robust_list(0x7fe691b38a20, 24)     = 0
+rseq(0x7fe691b39060, 0x20, 0, 0x53053053) = 0
+mprotect(0x7fe691d09000, 16384, PROT_READ) = 0
+mprotect(0x559a7fae8000, 4096, PROT_READ) = 0
+mprotect(0x7fe691d77000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7fe691d1c000, 165958)          = 0
+mkdir("Welcome", 0775)                  = 0
+getrandom("\xc8\xd2\x95\x39\xef\xe6\x0d\x3c", 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x559a8bc8b000
+brk(0x559a8bcac000)                     = 0x559a8bcac000
+openat(AT_FDCWD, "Welcome/Welcome", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+openat(AT_FDCWD, "Welcome/To", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 4
+openat(AT_FDCWD, "Welcome/OS-2024", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 5
+newfstatat(3, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+write(3, "niso\nIf you haven't read the cou"..., 79) = 79
+close(3)                                = 0
+newfstatat(4, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+write(4, "Start exercises early!", 22)  = 22
+close(4)                                = 0
+newfstatat(5, "", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_EMPTY_PATH) = 0
+write(5, "Good luck!", 10)              = 10
+close(5)                                = 0
+unlink("Welcome/Welcome")               = 0
+unlink("Welcome/To")                    = 0
+unlink("Welcome/OS-2024")               = 0
+rmdir("Welcome/")                       = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
