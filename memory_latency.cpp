@@ -110,9 +110,9 @@ int main(int argc, char *argv[]) {
   timespec_get(&t_dummy, TIME_UTC);
   const uint64_t zero =
       nanosectime(t_dummy) > 1000000000ull ? 0 : nanosectime(t_dummy);
-  uint64_t max_size = std::stoi(argv[1]);
+  uint64_t max_size = std::stol(argv[1]);
   float factor = std::stod(argv[2]);
-  uint64_t repeat = std::stoi(argv[3]);
+  uint64_t repeat = std::stol(argv[3]);
 
   if (max_size < 100 || factor <= 1 || repeat <= 0) {
     fprintf(stdout,
